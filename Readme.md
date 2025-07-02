@@ -168,6 +168,32 @@ There are two ways to integrate TinyMCE in your react project : -
   - Each menu item has its own onAction handler
   - getSubmenuItems() returns submenu structure when expanded
 
+### Pattern 1: Conditional Button
+```javascript // Button that's only enabled when text is selected
+onSetup: (buttonApi) => {
+  const updateState = () => {
+    const hasSelection = editor.selection.getContent().length > 0;
+    buttonApi.setEnabled(hasSelection);
+  };
+  
+  editor.on('SelectionChange', updateState);
+  updateState(); // Set initial state
+  
+  return () => editor.off('SelectionChange', updateState);
+}
+```
+### Pattern 2: Toggle Button
+```javascript 
+let isActive = false;
+editor.ui.registry.addButton('toggleButton', {
+  text: 'Off',
+  onAction: (buttonApi) => {
+    isActive = !isActive;
+    buttonApi.setText(isActive ? 'On' : 'Off');
+    buttonApi.setIcon(isActive ? 'check' : 'close');
+  }
+});
+```
 
 
   
