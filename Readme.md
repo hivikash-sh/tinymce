@@ -195,6 +195,12 @@ editor.ui.registry.addButton('toggleButton', {
 });
 ```
 
+### Toggle Strike button [doc reference](https://www.tiny.cloud/docs/tinymce/latest/custom-toggle-toolbar-button/)
+![image](https://github.com/user-attachments/assets/0b3965b6-950b-4f50-b72f-ec3fa521269d)
+
+
+
+
 
   
  
